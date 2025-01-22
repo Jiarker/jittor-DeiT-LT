@@ -121,7 +121,7 @@ class VisionTransformer(nn.Module):
     """
 
     def __init__(self, img_size=224, patch_size=16, in_chans=3, num_classes=1000, embed_dim=768, depth=12,
-                 num_heads=12, mlp_ratio=4., qkv_bias=True, representation_size=None, distilled=False,
+                 num_heads=12, mlp_ratio=4., qkv_bias=True, representation_size=None, distilled=True,
                  drop_rate=0., attn_drop_rate=0., drop_path_rate=0., embed_layer=PatchEmbed, norm_layer=None,
                  act_layer=None, weight_init=''):
         """
@@ -249,7 +249,8 @@ class VisionTransformer(nn.Module):
                 # during inference, return the average of both classifier predictions
                 return x, x_dist
             else:
-                return (x + x_dist) / 2
+                # return (x + x_dist) / 2
+                return x, x_dist
         else:
             x = self.head(x)
         return x
@@ -437,7 +438,7 @@ def _create_vision_transformer(variant, pretrained=False, default_cfg=None, **kw
         VisionTransformer, variant, pretrained,
         default_cfg=default_cfg,
         pretrained_filter_fn=checkpoint_filter_fn,
-        pretrained_custom_load='npz' in default_cfg['url'],
+        # pretrained_custom_load='npz' in default_cfg['url'],
         **kwargs)
     return model
 

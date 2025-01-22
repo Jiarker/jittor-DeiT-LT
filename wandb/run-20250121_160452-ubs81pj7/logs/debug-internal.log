@@ -1,0 +1,15 @@
+{"time":"2025-01-21T16:04:52.621401658+09:00","level":"INFO","msg":"stream: starting","core version":"0.19.4","symlink path":"/home/ubuntu/code/myf/jittor-DeiT-LT/wandb/run-20250121_160452-ubs81pj7/logs/debug-core.log"}
+{"time":"2025-01-21T16:04:52.749008612+09:00","level":"INFO","msg":"created new stream","id":"ubs81pj7"}
+{"time":"2025-01-21T16:04:52.749135271+09:00","level":"INFO","msg":"stream: started","id":"ubs81pj7"}
+{"time":"2025-01-21T16:04:52.749188194+09:00","level":"INFO","msg":"writer: Do: started","stream_id":"ubs81pj7"}
+{"time":"2025-01-21T16:04:52.749276697+09:00","level":"INFO","msg":"sender: started","stream_id":"ubs81pj7"}
+{"time":"2025-01-21T16:04:52.749272274+09:00","level":"INFO","msg":"handler: started","stream_id":"ubs81pj7"}
+{"time":"2025-01-21T16:04:53.401308376+09:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-21T16:05:00.495458176+09:00","level":"INFO","msg":"stream: closing","id":"ubs81pj7"}
+{"time":"2025-01-21T16:05:00.495535349+09:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-21T16:05:00.496413325+09:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-21T16:05:01.741654803+09:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-01-21T16:05:02.337756206+09:00","level":"INFO","msg":"handler: closed","stream_id":"ubs81pj7"}
+{"time":"2025-01-21T16:05:02.33782148+09:00","level":"INFO","msg":"writer: Close: closed","stream_id":"ubs81pj7"}
+{"time":"2025-01-21T16:05:02.337845836+09:00","level":"INFO","msg":"sender: closed","stream_id":"ubs81pj7"}
+{"time":"2025-01-21T16:05:02.338103531+09:00","level":"INFO","msg":"stream: closed","id":"ubs81pj7"}

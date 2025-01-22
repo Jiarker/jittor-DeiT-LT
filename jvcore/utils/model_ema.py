@@ -8,9 +8,32 @@ from copy import deepcopy
 
 import jittor as jt
 import jittor.nn as nn
+import io
 
 _logger = logging.getLogger(__name__)
 
+def _load_checkpoint_for_ema(model_ema, checkpoint):
+    """
+    Workaround for ModelEma._load_checkpoint to accept an already-loaded object
+    """
+    mem_file = io.BytesIO()
+    jt.save(checkpoint, mem_file)
+    mem_file.seek(0)
+    model_ema._load_checkpoint(mem_file)
+
+def unwrap_model(model):
+    if isinstance(model, ModelEma):
+        return unwrap_model(model.ema)
+    else:
+        if hasattr(model, 'module'):
+            return unwrap_model(model.module)
+        elif hasattr(model, '_orig_mod'):
+            return unwrap_model(model._orig_mod)
+        else:
+            return model
+
+def get_state_dict(model, unwrap_fn=unwrap_model):
+    return unwrap_fn(model).state_dict()
 
 class ModelEma:
     """ Model Exponential Moving Average (DEPRECATED)
@@ -46,7 +69,7 @@ class ModelEma:
         if resume:
             self._load_checkpoint(resume)
         for p in self.ema.parameters():
-            p.requires_grad_(False)
+            p.requires_grad = False
 
     def _load_checkpoint(self, checkpoint_path):
         checkpoint = jt.load(checkpoint_path, map_location='cpu')

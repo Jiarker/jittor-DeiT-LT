@@ -119,10 +119,10 @@ if __name__ == '__main__':
     logger.addHandler(handler)
     
     train_loader = create_dataset(args.dataset, root=args.data_root, split='train', transform=get_train_transforms(), 
-                                batch_size=args.batch_size, shuffle=True, num_workers=args.num_workers)
+                                download=True, batch_size=int(args.batch_size), shuffle=True, num_workers=args.num_workers)
     
     val_loader = create_dataset(args.dataset, root=args.data_root, split='validation', transform=get_valid_transforms(), 
-                                batch_size=args.batch_size, shuffle=args.shuffle, num_workers=args.num_workers)
+                                download=True, batch_size=args.batch_size, shuffle=args.shuffle, num_workers=args.num_workers)
 
     model = create_model(args.model, True)
     

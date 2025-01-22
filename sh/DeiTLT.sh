@@ -1,0 +1,27 @@
+CUDA_VISIBLE_DEVICES=0 python main.py \
+    --model deit_base_distilled_patch16_224 \
+    --batch-size 32 \
+    --epochs 1200 \
+    --gpu 0 \
+    --teacher-path "pretrained/teacher_pretrained/cf100_100_teacher.pth" \
+    --distillation-type hard \
+    --data-path data/CIFAR100 \
+    --data-set CIFAR100LT \
+    --imb_factor 0.01 \
+    --output_dir deit_out_c100lt \
+    --student-transform 0 \
+    --teacher-transform 0 \
+    --teacher-model resnet32 \
+    --teacher-size 32 \
+    --experiment [jittor_sam_cifar100_if100] \
+    --drw 1100 \
+    --no-mixup-drw \
+    --custom_model \
+    --accum-iter 4 \
+    --save_freq 300 \
+    --eval-freq 10 \
+    --weighted-distillation \
+    --moco-t 0.05 --moco-k 1024 --moco-dim 32 --feat_dim 64 --paco \
+    --log-results \
+    # --student-path "pretrained/student_pretrained/deit_best_checkpoint.pth" \
+    # --eval \

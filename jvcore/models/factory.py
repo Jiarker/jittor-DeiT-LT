@@ -27,7 +27,8 @@ def create_model(
         **kwargs,
     )
 
-    if checkpoint_path:
+    if checkpoint_path != None:
         load_checkpoint(model, checkpoint_path)
+        print(f"load {model_name} checkpoint")
 
     return model
